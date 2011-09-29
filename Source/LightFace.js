@@ -242,7 +242,7 @@ var LightFace = new Class({
 	},
 	unfade: function(delay) {
 		(function() {
-			this.overlay.fade(0);
+			this.overlay.set('tween',{onComplete: (function(){ this.setStyle('visibility','hidden'); }).bind(this.overlay)}).fade(0);
 		}.bind(this)).delay(delay || this.options.fadeDelay);
 		this.fireEvent('unfade');
 		return this;
